@@ -3,4 +3,9 @@
 
 I have created Helloworld web app that includes todo list to practice basic web app development
 
-##Set-Up
+## Set-Up Django
+> <strong>Django</strong> is a server-side Python web framework. 
+
+<ol></ol>
+
+<img src = "django.png"/>
