@@ -17,12 +17,15 @@ from django.contrib import admin
 from django.urls import path
 from hello.views import helloView
 from todo.views import todoView, addTodo, deleteTodo
+from scheduler.views import schedulerView, fetchFilters
 from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('', helloView),
     path('admin/', admin.site.urls),
     path('todo/', todoView),
+    path('scheduler/', schedulerView),
+    path('filterresult/', fetchFilters),
     path('addTodo/', addTodo),
     path('deleteTodo/<int:todo_id>/', deleteTodo),
 ]

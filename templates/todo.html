@@ -1,4 +1,8 @@
-<h1> this is the todo page.</h1>
+{% load static %}
+
+<button type="button" onclick="location.href='/'">Go back</button>
+
+<h1> TODO LIST</h1>
 
 <ul>
     {% for todo_item in all_items %}
@@ -11,7 +15,7 @@
     </li>
     {% endfor %}
 
-
+    {{cal}}
     <!-- <li>temporary todo item A</li>
     <li>temporary todo item B</li> -->
 </ul>
@@ -23,7 +27,8 @@
     <input type = "submit" value = "Add"/>
 </form>
 
-<form action = "/printCal/" method = "post">{% csrf_token %}
+
+<!-- <form action = "/printCal/" method = "post">{% csrf_token %}
     <input type = "submit" value = "calendar"/>
-</form>
+</form> -->
 

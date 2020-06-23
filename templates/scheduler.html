@@ -1,0 +1,14 @@
+<h1>Schedule Your Classes Here</h1>
+
+<form action = "/filterresult/" method = "post">{% csrf_token %}
+    Department: <input type = "text" name= "dpt">
+    <!-- UPLW: <input type = "checkbox" name= "uplw">
+    R&E: <input type = "checkbox" name= "rne"> -->
+    <input type="submit" value="filter"/>
+</form>
+
+<h1>Search Result</h1>
+
+{% for a in dpt%}
+<li>{{a.dpt}}</li> 
+{% endfor %}
