@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'hello',
     'todo',
     'scheduler',
+    'filterresult',
 ]
 
 MIDDLEWARE = [

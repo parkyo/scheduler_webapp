@@ -1,21 +1,32 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from bs4 import BeautifulSoup
-import requests
 import pandas as pd
-from .models import Filters
+from .models import Input
 
 def schedulerView(request):
     # classnames=[]
     # Filters(dpt = request.POST['dpt'])
     return render(request, 'scheduler.html')
 
-
-
-
-def fetchFilters(self, request, classnames):
-    classname = Filters(classname = request.POST['classname'])
+def getResult(request):
+    # want to loop through inputs instead of repeating
+    for i in range(0,4):
+        name = 'class' + str(i)
+        text = request.POST.get(name, False)
+        if text :
+            c = Input(text = text)
+            c.save()
+    
     return HttpResponseRedirect('/filterresult')
+
+    
+
+
+
+# def fetchFilters(self, request, classnames):
+#     classname = Filters(classname = request.POST['classname'])
+#     return HttpResponseRedirect('/filterresult')
     # return HttpResponse(credits.content)
 
     # return render(request, 'filterresult.html', {'dpt':dpt})

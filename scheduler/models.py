@@ -1,4 +1,4 @@
 from django.db import models
 
-class Filters(models.Model):
-    classname = models.TextField()
+class Input(models.Model):
+    text = models.CharField(max_length=10)

@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from hello.views import helloView
 from todo.views import todoView, addTodo, deleteTodo
-from scheduler.views import schedulerView
+from scheduler.views import schedulerView, getResult
 from filterresult.views import resultView
 from django.views.generic.base import TemplateView
 
@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('todo/', todoView),
     path('scheduler/', schedulerView),
+    path('getResult/', getResult),
     path('filterresult/', resultView),
     path('addTodo/', addTodo),
     path('deleteTodo/<int:todo_id>/', deleteTodo),

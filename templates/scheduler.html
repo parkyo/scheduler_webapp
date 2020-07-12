@@ -1,7 +1,10 @@
 <h1>Schedule Your Classes Here</h1>
 
-<form action = "/filterresult/" method = "post">{% csrf_token %}
-    Department: <input type = "text" name= "dpt">
+<form action = "/getResult/" method = "post">{% csrf_token %}
+    class 1: <input type = "text" name= "class1">
+    class 2: <input type = "text" name= "class2">
+    class 3: <input type = "text" name= "class3">
+    class 4: <input type = "text" name= "class4">
     <!-- UPLW: <input type = "checkbox" name= "uplw">
     R&E: <input type = "checkbox" name= "rne"> -->
     <input type="submit" value="filter"/>

@@ -8,6 +8,7 @@ pylint = "*"
 
 [packages]
 django = "==2.1"
+requests-html = "*"
 
 [requires]
 python_version = "3.8"
