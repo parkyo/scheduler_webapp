@@ -11,7 +11,7 @@ def schedulerView(request):
 
 def getResult(request):
     # want to loop through inputs instead of repeating
-    for i in range(0,4):
+    for i in range(0,5):
         name = 'class' + str(i)
         text = request.POST.get(name, False)
         if text :
