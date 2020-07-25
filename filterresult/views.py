@@ -66,7 +66,7 @@ def create_obj(soup, cur_class):
         type_texts = sec.find_all('div', {'class':'col-md-1'})
         section = type_texts[0].find('span').text
         class_type = section.split(" ")
-        if class_type[1] == "(LAB)":
+        if class_type[1] == "(LAB)" or class_type[1] == "(DIS)":
             break
         # cols = sec.find_all('div', attrs={'class':'col-md-1'})
         # text_node = cols[2].find_element_by_xpath("//div[@class='col-md-1']/text()")
@@ -90,7 +90,7 @@ def create_obj(soup, cur_class):
         if start < 8 :
             start += 12
 
-        if times[1][0] == '3':
+        if times[1] == '30AM' or times[1] == '30PM':
             start += 0.5
 
         times = end.split(":", 1)
@@ -99,8 +99,8 @@ def create_obj(soup, cur_class):
         if end < 8 :
             end += 12
 
-        if times[1][0] == '3':
-            start += 0.5
+        if times[1] == '30AM' or times[1] == '30PM':
+            end += 0.5
 
         cur_sec = Section(num=no, start_time=start, end_time=end)
         cur_sec.save()
@@ -115,19 +115,23 @@ def create_obj(soup, cur_class):
 
     all_secs.append(sec_list)
     
-def makeSchedule(sec):
-    all = all_secs
-    if (sec > len(all_secs[0]) and sec > len(all_secs[1]) and sec > len(all_secs[2]) and sec > len(all_secs[3])):
+def makeSchedule(i):
+    if (i < 0) or (i > 3):
+        return True
+    # if (sec > len(all_secs[0]) and sec > len(all_secs[1]) and sec > len(all_secs[2]) and sec > len(all_secs[3])):
 
-        return False
+    #     return False
 
-    for i in range(0,4):
+    for sec in range(0, len(all_secs[i])):
+        available = True
         days = all_secs[i][sec].days.all()
         diff = 8.0
         init_start = (all_secs[i][sec].start_time) - diff
         start = int(init_start / 0.5)
         end = int((all_secs[i][sec].end_time - diff) / 0.5)
         for d in days :
+            if not available :
+                break
             sec_day = 0
             
             if d.day == 'Tu' :
@@ -145,17 +149,22 @@ def makeSchedule(sec):
 
             while j < end :
                 if schedule[sec_day][j] != 0 :
-                    return False
+                    k = start
+                    while k < j :
+                        schedule[sec_day][k] = 0
+                        k += 1
+                    available = False
+                    break
                 schedule[sec_day][j] = all_secs[i][sec].num
                 j += 1
 
-        if makeSchedule(sec+1):
-                return True
+        if available:
+            break
 
-        j = start
-        while j < end :
-            schedule[sec_day][j] = 0
-            j += 1
+    if makeSchedule(i+1):
+            return True
+
+            
         
 
     return False
