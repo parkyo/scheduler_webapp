@@ -8,11 +8,10 @@ import calendar
 
 def todoView(request):
     d = datetime.today()
-    cal = calendar.month(d.year, d.month, 0, 1)
     # html_cal = cal.formatmonth(d.year, d.month)
     all_todo_items = TodoItem.objects.all()
     return render(request, 'todo.html', 
-    {'all_items' : all_todo_items, 'cal' : cal})
+    {'all_items' : all_todo_items})
 
 
 def addTodo(request):

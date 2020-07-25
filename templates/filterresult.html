@@ -1,3 +1,27 @@
 <h1>Result</h1>
 
+<table>
+    <tr>
+        <th>time</th><th>Mon</th><th>Tus</th><th>Wed</th><th>Thu</th><th>Fri</th>
+    </tr>
+
+    {% for time in schedule %}
+    <tr>
+        
+        {% for c in time %}
+        <td>
+            {% if c != 0 %}
+                {{c}}
+            {% else %}
+                <br>
+            {% endif %}
+        </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+
+
+    </tr>
+</table>
+
 {{str}}

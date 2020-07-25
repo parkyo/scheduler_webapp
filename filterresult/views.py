@@ -9,12 +9,16 @@ from selenium.webdriver.chrome.options import Options
 import re
 
 all_secs = []
-schedule = [[0 for x in range(20)] for y in range(5)] 
-
+schedule = [[0 for x in range(6)] for y in range(20)] 
 
 def resultView(request):
     fetchData()
     makeSchedule(0)
+    j = 0
+    for i in range(0,10):
+        loc = i * 2
+        schedule[loc][0] = (8 + i)%12
+    schedule[8][0] = 12
     # classes = Class.objects.all()
     # i = 0
     # for i in range(0, 5):
@@ -23,7 +27,7 @@ def resultView(request):
     #     i += 1
 
     # makeSchedule(0)
-    return render(request, 'filterresult.html', {'str':schedule})
+    return render(request, 'filterresult.html', {'schedule':schedule})
 
 
 def fetchData():
@@ -132,30 +136,30 @@ def makeSchedule(i):
         for d in days :
             if not available :
                 break
-            sec_day = 0
+            sec_day = 1
             
             if d.day == 'Tu' :
-                sec_day = 1
-            
-            if d.day == 'W' :
                 sec_day = 2
             
-            if d.day == 'Th' :
+            if d.day == 'W' :
                 sec_day = 3
             
-            if d.day == 'F' :
+            if d.day == 'Th' :
                 sec_day = 4
+            
+            if d.day == 'F' :
+                sec_day = 5
             j = start
 
             while j < end :
-                if schedule[sec_day][j] != 0 :
+                if schedule[j][sec_day] != 0 :
                     k = start
                     while k < j :
-                        schedule[sec_day][k] = 0
+                        schedule[k][sec_day] = 0
                         k += 1
                     available = False
                     break
-                schedule[sec_day][j] = all_secs[i][sec].num
+                schedule[j][sec_day] = all_secs[i][sec].num
                 j += 1
 
         if available:
