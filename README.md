@@ -11,6 +11,10 @@ To run Django app locally set up your python environment <a href="https://cloud.
 4. <code>$ pipenv shell</code>
 5. <code>$ python manage.py runserver</code>
 6. In your browser, open <code>http://127.0.0.1:8000/</code>
+### Dependencies
+- pandas
+- selenium
+- crispy-forms
 
 ## How to use it
 1. Log in with your username and password
