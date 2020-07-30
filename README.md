@@ -25,6 +25,14 @@ To run Django app locally set up your python environment <a href="https://cloud.
 4. Home page when you successfully log in
 <img src="https://github.com/parkyo/scheduler_webapp/blob/master/README_images/home.png"/>
 
+### Scheduler 
+<img src="https://github.com/parkyo/scheduler_webapp/blob/master/README_images/scheduler.png"/>
+1. type in your U of M courses and click 'Result'
+<img src="https://github.com/parkyo/scheduler_webapp/blob/master/README_images/typed.png"/>
+
+2. Result
+<img src="https://github.com/parkyo/scheduler_webapp/blob/master/README_images/result.png"/>
+
 ### ToDo list
 <img src="https://github.com/parkyo/scheduler_webapp/blob/master/README_images/todo.png"/>
 1. type items into the blanks and click 'Add'
@@ -33,10 +41,3 @@ To run Django app locally set up your python environment <a href="https://cloud.
 2. Click 'Delete' to delete the selected item
 <img src="https://github.com/parkyo/scheduler_webapp/blob/master/README_images/delete.png"/>
 
-### Scheduler 
-<img src="https://github.com/parkyo/scheduler_webapp/blob/master/README_images/scheduler.png"/>
-1. type in your U of M courses and click 'Result'
-<img src="https://github.com/parkyo/scheduler_webapp/blob/master/README_images/typed.png"/>
-
-2. Result
-<img src="https://github.com/parkyo/scheduler_webapp/blob/master/README_images/result.png"/>
