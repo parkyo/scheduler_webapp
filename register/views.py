@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import RegisterForm
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 
 def registerView(request):
 
@@ -7,8 +9,11 @@ def registerView(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account created for {username}!')
+            return redirect('/login')
     else:
         form = RegisterForm()    
 
     return render(request, 'register.html', {'form':form})
+

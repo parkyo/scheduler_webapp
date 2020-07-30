@@ -10,24 +10,19 @@ import re
 
 all_secs = []
 schedule = [[0 for x in range(6)] for y in range(20)] 
-
+conflicts = []
 def resultView(request):
     fetchData()
-    makeSchedule(0)
+    scheduleCompleted = True
+    if makeSchedule(0) == False :
+        scheduleCompleted = False
     j = 0
     for i in range(0,10):
         loc = i * 2
         schedule[loc][0] = (8 + i)%12
     schedule[8][0] = 12
-    # classes = Class.objects.all()
-    # i = 0
-    # for i in range(0, 5):
-    #     secs = Class.objects.filter(name=classes[i].name).section.all()
-    #     all_secs.append(secs)
-    #     i += 1
 
-    # makeSchedule(0)
-    return render(request, 'filterresult.html', {'schedule':schedule})
+    return render(request, 'filterresult.html', {'available':scheduleCompleted, 'schedule':schedule, 'conflicts':conflicts})
 
 
 def fetchData():
@@ -120,6 +115,7 @@ def create_obj(soup, cur_class):
     all_secs.append(sec_list)
     
 def makeSchedule(i):
+    classes = Class.objects.all()
     if (i < 0) or (i > 3):
         return True
     # if (sec > len(all_secs[0]) and sec > len(all_secs[1]) and sec > len(all_secs[2]) and sec > len(all_secs[3])):
@@ -158,6 +154,7 @@ def makeSchedule(i):
                         schedule[k][sec_day] = 0
                         k += 1
                     available = False
+                    conflicts.append(classes[i])
                     break
                 schedule[j][sec_day] = all_secs[i][sec].num
                 j += 1
@@ -170,5 +167,6 @@ def makeSchedule(i):
 
             
         
+    conflicts.append(classes[i])
 
     return False

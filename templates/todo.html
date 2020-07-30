@@ -1,6 +1,8 @@
+{% extends 'header.html' %}
+
 {% load static %}
 
-<button type="button" onclick="location.href='/'">Go back</button>
+{% block content %}
 
 <h1> TODO LIST</h1>
 
@@ -15,19 +17,12 @@
     </li>
     {% endfor %}
 
-    <!-- <li>temporary todo item A</li>
-    <li>temporary todo item B</li> -->
 </ul>
 
-<!-- when user submits this form, user's browser sends POST 
-    request to the url /addTodo/ with the data inside this form -->
 <form action = "/addTodo/" method = "post">{% csrf_token %}
     <input type = "text" name = "content"/>
     <input type = "submit" value = "Add"/>
 </form>
+{% endblock content %}
 
-
-<!-- <form action = "/printCal/" method = "post">{% csrf_token %}
-    <input type = "submit" value = "calendar"/>
-</form> -->
 

@@ -1,0 +1,12 @@
+{% load static %}
+<style>
+    h3.ridge {border-style: ridge;}
+</style>
+<h3 class="ridge">
+{% if user.is_authenticated %}
+    {{user}}'s
+{% endif %}
+    Personal Scheduler 
+<button onclick="location.href='/logout'">Log out</button> <button onclick="location.href='/home'">Go to Home</button></h3>
+{% block content%}
+{% endblock content %}

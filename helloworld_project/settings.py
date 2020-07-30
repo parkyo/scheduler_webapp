@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'scheduler',
     'filterresult',
     'register',
-    'login'
 ]
 
 MIDDLEWARE = [
@@ -127,3 +126,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+LOGIN_REDIRECT_URL = '/'
+
+LOGIN_URL = 'login' 
+LOGOUT_URL = 'logout'
+

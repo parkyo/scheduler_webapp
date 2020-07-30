@@ -1,7 +1,12 @@
+{% extends 'header.html'%}
 {% load static %}
-
-<h1>welcome to younse's hello world web app</h1>
-
-<button type="button" onclick="location.href='/todo/'">TODO LIST</button>
-<button type="button" onclick="location.href='/scheduler/'">SCHEDULER</button>
-<button type="button" onclick="location.href='/filterresult/'">RESULT</button>
+{% block content %}
+<h1>Welcome 
+{% if user.is_authenticated %}
+    <i>{{user}}</i>
+{% endif %} to Your Personal Scheduler</h1>
+<h2>Available apps</h2>
+<li><button type="button" onclick="location.href='/todo/'">TODO LIST</button><br><br></li>
+<li><button type="button" onclick="location.href='/scheduler/'">SCHEDULER</button></li>
+<!-- <button type="button" onclick="location.href='/filterresult/'">RESULT</button> -->
+{% endblock content %}

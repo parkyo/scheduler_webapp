@@ -1,5 +1,8 @@
+{% extends 'header.html'%}
+{% load static %}
+{% block content %}
 <h1>Result</h1>
-
+{% if available %}
 <table>
     <tr>
         <th>time</th><th>Mon</th><th>Tus</th><th>Wed</th><th>Thu</th><th>Fri</th>
@@ -19,9 +22,12 @@
         {% endfor %}
     </tr>
     {% endfor %}
-
-
     </tr>
 </table>
-
 {{str}}
+
+{% else %}
+<h3>Schedule Not Availabe!</h3>
+{{conflicts}}
+{% endif %}
+{% endblock content %}
