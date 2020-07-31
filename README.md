@@ -46,3 +46,10 @@ To run Django app locally set up your python environment <a href="https://cloud.
 2. Click 'Delete' to delete the selected item
 <img src="https://github.com/parkyo/scheduler_webapp/blob/master/README_images/delete.png"/>
 
+
+## Future Features
+### Scheduler
+- option to set the time window of the schedule
+- select the number of courses
+- generate a different schedule if the user doesn't like the first one
+- style the result
