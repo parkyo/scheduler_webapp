@@ -53,3 +53,5 @@ To run Django app locally set up your python environment <a href="https://cloud.
 - select the number of courses
 - generate a different schedule if the user doesn't like the first one
 - style the result
+### Todo
+- add/sort the items by dates
